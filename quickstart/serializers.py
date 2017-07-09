@@ -1,20 +1,12 @@
-from django.contrib.auth.models import User, Group
-from quickstart.models import IDUser
+from quickstart.models import IDUser, NewIDUser
 from rest_framework import serializers
-
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('url', 'username', 'email', 'groups')
-
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Group
-        fields = ('url', 'name')
 
 class IDUserSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = IDUser
+		fields = ('url', 'user_id', 'first_name', 'last_name', 'password', 'date_of_birth', 'pictureURL')
+
+class NewIDUserSerializer(serializers.HyperlinkedModelSerializer):
+	class Meta:
+		model = NewIDUser
 		fields = ('url', 'user_id', 'first_name', 'last_name', 'password', 'date_of_birth', 'pictureURL')
