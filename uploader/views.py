@@ -15,7 +15,7 @@ class FileUploadView(APIView):
     def put(self, request, filename, format=None):
         data = request.FILES['file']
 
-        path =  default_storage.save('uploader/newUserIdPicture/'+filename, ImageFile(data))
+        path =  default_storage.save('static/newidphotos/'+filename, ImageFile(data))
         tmp_file = os.path.join(settings.BASE_DIR, path)
 
         return Response(status=204)

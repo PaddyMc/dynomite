@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<link href="/static/css/registernewuser.css" rel="stylesheet" type="text/css" />
+	</head>
 	<body>
-
+		<h1>Register new user</h1>
+		<div>
 		{% if new_id_user_list %}
 		    <ul>
 		    {% for user in new_id_user_list %}
@@ -11,6 +15,6 @@
 		{% else %}
 		    <p>No new users are available.</p>
 		{% endif %}
-
+		</div>
 	</body>
 </html>

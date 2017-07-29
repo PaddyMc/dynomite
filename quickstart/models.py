@@ -9,6 +9,9 @@ class IDUser(models.Model):
 	pictureURL = models.CharField(max_length=400)
 	date_of_birth = models.DateField()
 
+	def __str__(self):
+		return self.user_id
+
 
 class NewIDUser(models.Model):
 	user_id = models.AutoField(primary_key=True)
@@ -18,3 +21,7 @@ class NewIDUser(models.Model):
 	password = models.CharField(max_length=30)
 	pictureURL = models.CharField(max_length=400)
 	date_of_birth = models.DateField()
+
+	def __str__(self):
+		return self.user_id
+        

@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<link href="/static/css/registernewuser.css" rel="stylesheet" type="text/css" />
+	</head>
 	<body>
-
+	<h1>New user details</h1>
+		<!-- <img src="/static/idphotos/abyssWalker.jpg" width="" height="" alt="" title=""/> -->
+		<div>
+		
 		{% if new_user_entity %}
 		    <ul>
 		    {% for user in new_user_entity %}
+		    <img src="/static/newidphotos/{{ user.pictureURL }}" width="" height="" alt="" title=""/>
 		        <li>{{ user.first_name }}</li>
 		        <li>{{ user.last_name }}</li>
+		        <li>{{ user.email }}</li>
+		        <li>{{ user.date_of_birth }}</li>
+		        <li>{{ user.pictureURL }}</li>
+
+		        <form action="{% url 'register' user.user_id %}" method="post">
+					{% csrf_token %}
+					<input type="submit" value="Register" />
+				</form>
 		    {% endfor %}
 		    </ul>
 		{% else %}
 		    <p>No new user is available with that id.</p>
 		{% endif %}
+
+		</div>
+
 	</body>
 </html>

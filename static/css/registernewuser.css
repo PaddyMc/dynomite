@@ -1,0 +1,22 @@
+body {
+    background-color: lightgray;
+}
+h1 {
+    text-align: center;
+}
+img {
+	/*width: 50%;*/
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+li {
+    text-align: center;
+    /*display: inline;*/
+}
+
+div {
+	border-style: inset;
+	text-align: center;
+}
+
