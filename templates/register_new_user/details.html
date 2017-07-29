@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		{% if new_user_entity %}
+		    <ul>
+		    {% for user in new_user_entity %}
+		        <li>{{ user.first_name }}</li>
+		        <li>{{ user.last_name }}</li>
+		    {% endfor %}
+		    </ul>
+		{% else %}
+		    <p>No new user is available with that id.</p>
+		{% endif %}
+	</body>
+</html>

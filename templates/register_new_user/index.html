@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		{% if new_id_user_list %}
+		    <ul>
+		    {% for user in new_id_user_list %}
+		        <li><a href="{% url 'detail' user.user_id %}">{{ user.first_name }}</a></li>
+		    {% endfor %}
+		    </ul>
+		{% else %}
+		    <p>No new users are available.</p>
+		{% endif %}
+
+	</body>
+</html>
