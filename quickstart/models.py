@@ -10,7 +10,7 @@ class IDUser(models.Model):
 	date_of_birth = models.DateField()
 
 	def __str__(self):
-		return self.user_id
+		return self.first_name
 
 
 class NewIDUser(models.Model):
@@ -23,5 +23,5 @@ class NewIDUser(models.Model):
 	date_of_birth = models.DateField()
 
 	def __str__(self):
-		return self.user_id
+		return self.first_name
         
