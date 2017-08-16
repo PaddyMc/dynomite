@@ -3,6 +3,9 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.template import loader
 from django.views import generic
 from django.urls import reverse
+import os
+from django.conf import settings
+import shutil
 
 from quickstart.models import NewIDUser, IDUser
 
@@ -19,7 +22,6 @@ class IndexView(generic.ListView):
     context_object_name = 'new_id_user_list'
 
     def get_queryset(self):
-        """Return the last five published questions."""
         return NewIDUser.objects.all().order_by('first_name')
 
 def detail(request, new_user_id):
@@ -30,16 +32,8 @@ def detail(request, new_user_id):
 	template = loader.get_template('register_new_user/details.html')
 	return HttpResponse(template.render(context, request))
 
-# def DetailView(generic.ListView):
-# 	template_name = 'register_new_user/details.html'
-#     context_object_name = 'new_user_entity'
-
-#     def get_queryset(self):
-#         """Return the last five published questions."""
-#         return NewIDUser.objects.filter(user_id=new_user_id)
-
 def results(request, question_id):
-    response = "new user created, num in DB %s."
+    response = "Successfully created a new user, ID_USER is DB %s."
     return HttpResponse(response % question_id)
 
 def register(request, new_user_id):
@@ -57,10 +51,10 @@ def register(request, new_user_id):
 	user.save()
 
 	new_user_entity.delete()
+	new_path = os.path.join(settings.BASE_DIR, 'static')
+	new_path_add = os.path.join(new_path, 'idphotos')
+	new_path_remove = os.path.join(new_path, 'newidphotos')
+
+	shutil.move(new_path_remove+"/"+user.pictureURL, new_path_add+"/"+user.pictureURL)
 	
 	return HttpResponseRedirect(reverse('results', args=(new_user_id,)))
-	# try:
- #        selected_choice = question.choice_set.get(pk=request.POST['register'])
-
-
-	pass
